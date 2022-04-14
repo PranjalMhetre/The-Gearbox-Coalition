@@ -6,7 +6,7 @@ export default function HomePage() {
     <>
       <Welcome />
       <ColorSchemeToggle />
-      <div className='text-green-300 dark:text-red-300 text-center mt-2 '>Light === green, dark ==== red</div>
+      <div className='text-green-300 dark:text-red-300 text-center mt-2 '>Light === green, dark === red</div>
     </>
   );
 }
