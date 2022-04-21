@@ -19,6 +19,7 @@ export async function getStaticProps(){
     props: {
       teams: teamRes.items,
     },
+    revalidate: 5,
   }
 }
 
