@@ -8,8 +8,8 @@ import { useMantineColorScheme } from '@mantine/core'
 
 export async function getStaticProps(){
   const client = createClient({
-    space: 'mcgbm1socg24', //process.env.CONTENTFUL_SPACE_ID,
-    accessToken: 'L6zPnIjA2mGQDQnCnPHk2QGEB-SczBtYRTO2ZMbQxWM', //process.env.CONTENTFUL_ACCESS_TOKEN,
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   })
 
   const teamRes = await client.getEntries({
@@ -37,7 +37,7 @@ export default function HomePage({ teams }) {
           zoom: 7
         }}
         style={{width: '100vw', height: '100vh'}}
-        mapboxAccessToken="pk.eyJ1IjoibGF2YXdhZmZsZSIsImEiOiJjbDI4MnE2ZnMwNWZvM2xvMW96eDdndXc4In0.hpG9-aeBSEHWFmfwqYObkw"
+        mapboxAccessToken={process.env.MAPBOX_ACCESS_TOKEN}
         mapStyle={colorScheme === "dark" ? "mapbox://styles/mapbox/dark-v9" : "mapbox://styles/mapbox/streets-v9"}
       >
         {teams && teams.map(team => {
