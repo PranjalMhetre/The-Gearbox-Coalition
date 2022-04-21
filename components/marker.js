@@ -35,6 +35,7 @@ export default function CustomMarker({ teamData }) {
         <h1 className='text-2xl'>{`Distance: ${team.fields.distance} miles`}</h1>
         <h1 className='text-2xl font-bold'>{`Has Field: ${team.fields.hasField}`}</h1> 
         <h1 className='text-2xl'>{`Has Business: ${team.fields.hasBusinessPlan}`}</h1>
+        <h1 className='text-2xl'>{`Wants to join: ${team.fields.wantsToJoin}`}</h1>
         <h1 className='text-2xl text-center'>--- Comp Record ---</h1>
         <p className='text-xl'>{documentToReactComponents(team.fields.compRecord)}</p>
       </Modal>
