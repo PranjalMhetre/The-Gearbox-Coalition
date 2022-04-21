@@ -1,7 +1,6 @@
 import Map, { Marker } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React from 'react'
-import useWindowSize from "../components/useWindow"
 import CustomMarker from "../components/marker"
 import { createClient } from 'contentful'
 import ColorSchemeToggle from '../components/ColorSchemeToggle/ColorSchemeToggle'
@@ -24,8 +23,7 @@ export async function getStaticProps(){
 }
 
 export default function HomePage({ teams }) {
-  const { width, height } = useWindowSize()
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { colorScheme } = useMantineColorScheme();
   console.log(teams)
 
   return (
@@ -37,7 +35,7 @@ export default function HomePage({ teams }) {
           latitude: 40.328070,
           zoom: 7
         }}
-        style={{width, height}}
+        style={{width: '100vw', height: '100vh'}}
         mapboxAccessToken="pk.eyJ1IjoibGF2YXdhZmZsZSIsImEiOiJjbDI4MnE2ZnMwNWZvM2xvMW96eDdndXc4In0.hpG9-aeBSEHWFmfwqYObkw"
         mapStyle={colorScheme === "dark" ? "mapbox://styles/mapbox/dark-v9" : "mapbox://styles/mapbox/streets-v9"}
       >
