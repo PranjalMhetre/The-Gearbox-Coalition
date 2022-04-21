@@ -25,7 +25,7 @@ export async function getStaticProps(){
 
 export default function HomePage({ teams }) {
   const { colorScheme } = useMantineColorScheme();
-  console.log(teams)
+  // console.log(teams)
 
   return (
     <>

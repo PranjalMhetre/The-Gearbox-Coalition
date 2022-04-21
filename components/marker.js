@@ -2,12 +2,21 @@ import { useState } from 'react';
 import { Modal, UnstyledButton } from '@mantine/core';
 import { useClickOutside } from '@mantine/hooks';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import useGeo from "./hooks/useGeo"
 
 export default function CustomMarker({ teamData }) {
   const team = teamData;
 
   const [opened, setOpened] = useState(false);
   const ref = useClickOutside(() => setOpened(false));
+
+  // const init = {"lat": "40.3279", "lon": "-74.8049"}
+  // const final = {"lat": team.fields.location.lat, "lon": team.fields.location.lon}
+
+  // useGeo(init, final).then((res) => {
+  //   console.log(res)
+  // })
+
   return (
     <>
       <Modal 
