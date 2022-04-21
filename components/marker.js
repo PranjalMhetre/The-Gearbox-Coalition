@@ -28,7 +28,7 @@ export default function CustomMarker({ teamData }) {
         size="lg"
         opened={opened} 
         onClose={() => setOpened(false)} 
-        title={`Team Number: ${team.fields.teamNumber}`}
+        title={`Team: ${team.fields.teamName} (${team.fields.teamNumber})`}
       >
         <h1 className='text-2xl'>{`Address: ${team.fields.address}`}</h1>
         <h1 className='text-2xl'>{`Travel Time: ${team.fields.travelTime} minutes`}</h1>
