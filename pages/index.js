@@ -4,6 +4,8 @@ import React from 'react'
 import useWindowSize from "../components/useWindow"
 import CustomMarker from "../components/marker"
 import { createClient } from 'contentful'
+import ColorSchemeToggle from '../components/ColorSchemeToggle/ColorSchemeToggle'
+import { useMantineColorScheme } from '@mantine/core'
 
 export async function getStaticProps(){
   const client = createClient({
@@ -23,10 +25,12 @@ export async function getStaticProps(){
 
 export default function HomePage({ teams }) {
   const { width, height } = useWindowSize()
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   console.log(teams)
 
   return (
     <>
+      <ColorSchemeToggle />
       <Map
         initialViewState={{
           longitude: -74.791030,
@@ -35,11 +39,11 @@ export default function HomePage({ teams }) {
         }}
         style={{width, height}}
         mapboxAccessToken="pk.eyJ1IjoibGF2YXdhZmZsZSIsImEiOiJjbDI4MnE2ZnMwNWZvM2xvMW96eDdndXc4In0.hpG9-aeBSEHWFmfwqYObkw"
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle={colorScheme === "dark" ? "mapbox://styles/mapbox/dark-v9" : "mapbox://styles/mapbox/streets-v9"}
       >
         {teams && teams.map(team => {
           return (
-          <Marker key={team.sys.id} longitude={team.fields.longitude} latitude={team.fields.latitude} anchor="center" >
+          <Marker key={team.sys.id} longitude={team.fields.location.lon} latitude={team.fields.location.lat} anchor="center" >
             <CustomMarker teamData={team} />
           </Marker>
           )
