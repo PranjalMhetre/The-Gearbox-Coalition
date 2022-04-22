@@ -17,6 +17,7 @@ export default function CustomMarker({ teamData }) {
   //   console.log(res)
   // })
 
+  const markerStyles = "transition-all duration-100 w-[2rem] aspect-square rounded-[50%] inline-flex justify-center items-center text-white"
   return (
     <>
       <Modal 
@@ -40,7 +41,7 @@ export default function CustomMarker({ teamData }) {
         <p className='text-xl'>{documentToReactComponents(team.fields.compRecord)}</p>
       </Modal>
 
-      <UnstyledButton onClick={() => setOpened(true)} className="bg-red-300 hover:bg-blue-300 dark:bg-blue-300 dark:hover:bg-red-300 transition-colors duration-300 w-[2rem] aspect-square rounded-[50%] inline-flex justify-center items-center text-white">
+      <UnstyledButton onClick={() => setOpened(true)} className={ team.fields.wantsToJoin.includes("likely") ? team.fields.wantsToJoin.includes("very") ? "bg-green-400 hover:bg-green-500" + markerStyles : "bg-green-200 hover:bg-green-300 " + markerStyles : "bg-orange-300 hover:bg-orange-400 " + markerStyles}>
         {team.fields.teamNumber}
       </UnstyledButton>
     </>
