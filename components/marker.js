@@ -39,6 +39,10 @@ export default function CustomMarker({ teamData }) {
         <h1 className='text-2xl'>{`Wants to join: ${team.fields.wantsToJoin}`}</h1>
         <h1 className='text-2xl text-center'>--- Comp Record ---</h1>
         <p className='text-xl'>{documentToReactComponents(team.fields.compRecord)}</p>
+        {team.fields.otherInfo && (
+          <h1 className='text-2xl text-center'>--- Other Info ---</h1>
+        )}
+        <p className='text-xl'>{documentToReactComponents(team.fields.otherInfo)}</p>
       </Modal>
 
       <UnstyledButton onClick={() => setOpened(true)} className={ team.fields.wantsToJoin.includes("likely") ? team.fields.wantsToJoin.includes("very") ? "bg-green-400 hover:bg-green-500" + markerStyles : "bg-green-200 hover:bg-green-300 " + markerStyles : "bg-orange-300 hover:bg-orange-400 " + markerStyles}>
