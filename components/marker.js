@@ -34,18 +34,44 @@ export default function CustomMarker({ teamData }) {
         <h1 className='text-2xl'>{`Address: ${team.fields.address}`}</h1>
         <h1 className='text-2xl'>{`Travel Time: ${team.fields.travelTime} minutes`}</h1>
         <h1 className='text-2xl'>{`Distance: ${team.fields.distance} miles`}</h1>
-        <h1 className='text-2xl font-bold'>{`Has Field: ${team.fields.hasField}`}</h1> 
-        <h1 className='text-2xl'>{`Has Business: ${team.fields.hasBusinessPlan}`}</h1>
-        <h1 className='text-2xl'>{`Wants to join: ${team.fields.wantsToJoin}`}</h1>
-        <h1 className='text-2xl text-center'>--- Comp Record ---</h1>
+        <h1 className='text-2xl font-bold'>{`Field State: ${team.fields.hasField}`}</h1> 
+        <h1 className='text-2xl'>{`Business Team Level: ${team.fields.hasBusinessPlan}`}</h1>
+        <h1 className='text-2xl'>{`Do they want to join: ${team.fields.wantsToJoin}`}</h1>
+        <h1 className='text-2xl text-center'>--- Competition Record ---</h1>
         <p className='text-xl'>{documentToReactComponents(team.fields.compRecord)}</p>
         {team.fields.otherInfo && (
-          <h1 className='text-2xl text-center'>--- Other Info ---</h1>
+          <h1 className='text-2xl text-center'>--- Other Information ---</h1>
         )}
         <p className='text-xl'>{documentToReactComponents(team.fields.otherInfo)}</p>
       </Modal>
+{/* 
+if (in coalition) {
+  return "blue"
+} else if(very likely){
+  return dark green"
+}else if(likely){
+  return "light green"
+} else {
+  return "orange"
+}
+*/
+}
 
-      <UnstyledButton onClick={() => setOpened(true)} className={ team.fields.wantsToJoin.includes("likely") ? team.fields.wantsToJoin.includes("very") ? "bg-green-400 hover:bg-green-500" + markerStyles : "bg-green-200 hover:bg-green-300 " + markerStyles : "bg-orange-300 hover:bg-orange-400 " + markerStyles}>
+      <UnstyledButton onClick={() => setOpened(true)} className={ 
+        (team.fields.wantsToJoin.includes("in coalition")) ? 
+          "bg-blue-300 hover:bg-blue-400 " + markerStyles 
+        : (team.fields.wantsToJoin.includes("very")) ?
+          "bg-green-400 hover:bg-green-500" + markerStyles 
+        : (team.fields.wantsToJoin.includes("likely")) ?
+          "bg-green-200 hover:bg-green-300 " + markerStyles 
+        : 
+          "bg-orange-300 hover:bg-orange-400 " + markerStyles
+
+        // team.fields.wantsToJoin.includes("likely") ? team.fields.wantsToJoin.includes("very") ? 
+        // "bg-green-400 hover:bg-green-500" + markerStyles : 
+        // "bg-green-200 hover:bg-green-300 " + markerStyles : 
+        // "bg-orange-300 hover:bg-orange-400 " + markerStyles
+      }>
         {team.fields.teamNumber}
       </UnstyledButton>
     </>
